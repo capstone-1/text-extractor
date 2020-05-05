@@ -3,7 +3,7 @@ from krwordrank.sentence import make_vocab_score
 from krwordrank.sentence import MaxScoreTokenizer
 from krwordrank.sentence import keysentence
 # 분석하고자 하는 텍스트 읽기
-fileName = 'input.txt'
+fileName = 'kor_input.txt'
 texts = []
 with open(fileName, encoding='utf-8-sig') as file:
     for line in file:
@@ -21,7 +21,7 @@ max_iter = 10
 keywords, rank, graph = wordrank_extractor.extract(texts, beta, max_iter, num_keywords=100)
 
 # 단어 출력부분
-with open('word_output.txt',mode='w',encoding='utf-8-sig') as file:
+with open('kor_word_output.txt',mode='w',encoding='utf-8-sig') as file:
     for word, r in sorted(keywords.items(), key=lambda x:x[1], reverse=True)[:10]:
         file.write('%8s:\t%.4f\n' % (word, r))
 
@@ -39,6 +39,6 @@ sentencses = keysentence(
 )
 
 # 문장 출력부분
-with open('sentence_output.txt',mode='w',encoding='utf-8-sig') as file:
+with open('kor_sentence_output.txt',mode='w',encoding='utf-8-sig') as file:
     for sentence in sentencses:
         file.write(sentence+'\n')
